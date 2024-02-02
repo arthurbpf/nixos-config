@@ -1,8 +1,12 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
 { config, inputs, outputs, pkgs, ... }:
 {
   imports =
     [
-      ./hardware-configuration.nix
+      ./hardware-configuration.nix # Include the results of the hardware scan.
 
       outputs.nixosModules.base
 
@@ -45,6 +49,7 @@
 
     nvidiaSettings = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+
   };
   virtualisation.docker.enableNvidia = true;
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -89,14 +94,8 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  networking.hostName = "dell-g15";
+  networking.hostName = "server";
 
-  services.syncthing = {
-    enable = true;
-    user = "arthur";
-    dataDir = "/home/arthur/Sync"; # Default folder for new synced folders
-    configDir = "/home/arthur/.config/syncthing"; # Folder for Syncthing's settings and keys
-  };
   services.sshd.enable = true;
   programs.adb.enable = true;
 
