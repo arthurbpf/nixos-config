@@ -26,7 +26,7 @@
       overlays = import ./overlays { inherit inputs; };
 
       nixosConfigurations = {
-        arthur-laptop = nixpkgs.lib.nixosSystem {
+        dell-g15 = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/dell-g15/default.nix
@@ -44,7 +44,7 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
-        "arthur@arthur-laptop" = home-manager.lib.homeManagerConfiguration {
+        "arthur@dell-g15" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
