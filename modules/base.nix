@@ -8,7 +8,7 @@
       experimental-features = [ "nix-command" "flakes" ];
       substituters = [
         "https://nix-community.cachix.org"
-        "https://cuda-mantainers.cachix.org"
+        "https://cuda-maintainers.cachix.org"
         "https://hyprland.cachix.org"
       ];
       trusted-public-keys = [
