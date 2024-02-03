@@ -38,6 +38,8 @@
 
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
+
+    ungoogled-chromium
   ];
 
   # Enable greetd
