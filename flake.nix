@@ -49,7 +49,7 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             # > Our main home-manager configuration file <
-            ./home/default.nix
+            ./home/arthur/default.nix
           ];
         };
         "arthur@server" = home-manager.lib.homeManagerConfiguration {
@@ -57,7 +57,7 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             # > Our main home-manager configuration file <
-            ./home/default.nix
+            ./home/arthur/default.nix
           ];
         };
       };
