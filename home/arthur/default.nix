@@ -36,12 +36,6 @@
     username = "arthur";
     homeDirectory = "/home/arthur";
 
-    # Deploy dotfiles submodule to home
-    file."/home/arthur/" = {
-    	source = ./dotfiles;
-	recursive = true;
-    };
-
     stateVersion = "23.11";
   };
 

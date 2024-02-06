@@ -84,16 +84,6 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.arthur = {
-    isNormalUser = true;
-    description = "Arthur";
-    extraGroups = [ "networkmanager" "wheel" "input" "adbusers" "docker" ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-    ];
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
