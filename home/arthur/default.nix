@@ -19,7 +19,7 @@
     file."${config.xdg.configHome}/swaylock" = { source = ./configs/swaylock; recursive = true; };
     file."${config.xdg.configHome}/dunst" = { source = ./configs/dunst; recursive = true; };
     file."${config.xdg.configHome}/kitty" = { source = ./configs/kitty; recursive = true; };
-    
+
 
     # User specific packages
     packages = with pkgs; [
