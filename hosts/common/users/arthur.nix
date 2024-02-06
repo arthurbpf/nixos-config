@@ -1,4 +1,4 @@
-{pkgs, inputs, outputs, ...}: {
+{ pkgs, inputs, ... }: {
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.arthur = {
@@ -10,4 +10,6 @@
       inputs.home-manager.packages.${pkgs.system}.home-manager
     ];
   };
+
+  home-manager.users.arthur = import ./../../../home/arthur/default.nix;
 }
