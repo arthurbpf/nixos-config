@@ -1,6 +1,0 @@
-# M for manga mode
-unmap m
-map m set page-right-to-left
-
-# Copy to clipboard
-set selection-clipboard clipboard

@@ -10,8 +10,15 @@
     username = "arthur";
     homeDirectory = "/home/arthur";
 
+    # Symlink programs not supported by home-manager, or stuff that I'd rather keep out of it!
     # file."${config.home.homeDirectory}/" = { source = ./dotfiles; recursive = true; };
     file."${config.xdg.configHome}/nvim" = { source = ./configs/neovim; recursive = true; };
+    file."${config.xdg.configHome}/hypr" = { source = ./configs/hypr; recursive = true; };
+    file."${config.xdg.configHome}/wal" = { source = ./configs/pywal; recursive = true; };
+    file."${config.xdg.configHome}/waybar" = { source = ./configs/waybar; recursive = true; };
+    file."${config.xdg.configHome}/swaylock" = { source = ./configs/swaylock; recursive = true; };
+    file."${config.xdg.configHome}/dunst" = { source = ./configs/dunst; recursive = true; };
+    file."${config.xdg.configHome}/kitty" = { source = ./configs/kitty; recursive = true; };
     
 
     # User specific packages
