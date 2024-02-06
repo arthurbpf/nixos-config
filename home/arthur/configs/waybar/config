@@ -7,8 +7,8 @@
     "spacing": 8, // Gaps between modules
 
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "hyprland/mode", "hyprland/scratchpad", "custom/media"],
-    //"modules-center": ["hyprland/window"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window", "hyprland/mode", "hyprland/scratchpad", "custom/media"],
+    //"modules-center": [],
 	"modules-center": ["clock"],
     "modules-right": ["idle_inhibitor", "network", "cpu", "memory", "backlight", "hyprland/language", "battery", "pulseaudio", "tray"],
 
