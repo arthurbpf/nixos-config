@@ -14,6 +14,6 @@
     cargo
     rustc
 
-    ollama
+    # ollama
   ];
 }
