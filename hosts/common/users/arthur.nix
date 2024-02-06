@@ -1,5 +1,5 @@
-{pkgs, inputs, ...}: {
-  
+{pkgs, inputs, outputs, ...}: {
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.arthur = {
     isNormalUser = true;

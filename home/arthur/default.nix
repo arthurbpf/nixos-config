@@ -39,6 +39,8 @@
     stateVersion = "23.11";
   };
 
+  home.file."${config.home.homeDirectory}/" = { source = ./old_dotfiles; recursive = true;};
+
   # User specific packages
   home.packages = with pkgs; [
     (retroarch.override {

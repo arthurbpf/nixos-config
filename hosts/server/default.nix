@@ -57,7 +57,7 @@
   };
   virtualisation.docker.enableNvidia = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  nixpkgs.config.cudaSupport = true;
+  nixpkgs.config.cudaSupport = false;
 
   # Bootloader.
   boot = {
