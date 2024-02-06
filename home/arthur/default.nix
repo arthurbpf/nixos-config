@@ -1,4 +1,5 @@
-{ pkgs
+{ pkgs,
+  config
 , ...
 }: {
   # You can import other home-manager modules here
@@ -13,14 +14,13 @@
     # ./nvim.nix
   ];
 
+  /* Since we are using the global instance of nixpkgs, this does not apply
   nixpkgs = {
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
-      /*
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      */
     ];
     # Configure your nixpkgs instance
     config = {
@@ -29,6 +29,7 @@
       allowUnfreePredicate = _: true;
     };
   };
+  */
 
   home = {
     username = "arthur";
