@@ -95,13 +95,6 @@
 
   networking.hostName = "dell-g15";
 
-  services.syncthing = {
-    enable = true;
-    user = "arthur";
-    dataDir = "/home/arthur/Sync";
-    configDir = "/home/arthur/.config/syncthing";
-  };
-
   services.sshd.enable = true;
   programs.adb.enable = true;
 
