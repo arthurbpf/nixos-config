@@ -4,6 +4,10 @@
 }: {
   imports = [
     ../modules/syncthing.nix
+
+    ./modules/kitty.nix
+    ./modules/look-and-feel.nix
+    ./modules/zathura.nix
   ];
 
   home = {
@@ -18,8 +22,6 @@
     file."${config.xdg.configHome}/waybar" = { source = ./configs/waybar; recursive = true; };
     file."${config.xdg.configHome}/swaylock" = { source = ./configs/swaylock; recursive = true; };
     file."${config.xdg.configHome}/dunst" = { source = ./configs/dunst; recursive = true; };
-    file."${config.xdg.configHome}/kitty" = { source = ./configs/kitty; recursive = true; };
-
 
     # User specific packages
     packages = with pkgs; [
@@ -65,39 +67,6 @@
       User git
       IdentityFile ~/.ssh/github
   ";
-    };
-
-    # Zathura - a lightweight PDF viewer
-    zathura = {
-      enable = true;
-      mappings = {
-        m = "page-right-to-left";
-      };
-      options = {
-        selection-clipboard = "clipboard";
-      };
-    };
-  };
-
-  # Customize look and feel
-  home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 24;
-
-    gtk.enable = true;
-  };
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Orchis-Dark";
-      package = pkgs.orchis-theme;
-    };
-
-    iconTheme = {
-      name = "Papirus";
-      package = pkgs.papirus-icon-theme;
     };
   };
 
