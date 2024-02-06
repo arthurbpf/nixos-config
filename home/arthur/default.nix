@@ -10,7 +10,7 @@
     username = "arthur";
     homeDirectory = "/home/arthur";
 
-    file."${config.home.homeDirectory}/" = { source = ./old_dotfiles; recursive = true; };
+    file."${config.home.homeDirectory}" = { source = ./old_dotfiles; recursive = true; };
 
     # User specific packages
     packages = with pkgs; [
