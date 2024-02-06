@@ -1,7 +1,14 @@
-{ ... }:
+{ outputs, ... }:
 {
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+    ];
+  };
 
   nix = {
     settings = {
