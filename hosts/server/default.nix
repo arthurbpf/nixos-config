@@ -8,6 +8,10 @@
     [
       ./hardware-configuration.nix # Include the results of the hardware scan.
 
+      ../common/users/arthur.nix
+
+      inputs.home-manager.nixosModules.home-manager
+
       outputs.nixosModules.base
 
       outputs.nixosModules.audio

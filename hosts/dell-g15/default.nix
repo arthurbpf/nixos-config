@@ -8,6 +8,10 @@
     [
       ./hardware-configuration.nix # Include the results of the hardware scan.
 
+      ../common/users/arthur.nix
+
+      inputs.home-manager.nixosModules.home-manager
+
       outputs.nixosModules.base
 
       outputs.nixosModules.audio
@@ -89,29 +93,15 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.arthur = {
-    isNormalUser = true;
-    description = "Arthur";
-    extraGroups = [ "networkmanager" "wheel" "input" "adbusers" "docker" ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-    ];
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  ];
-
   networking.hostName = "dell-g15";
 
   services.syncthing = {
     enable = true;
     user = "arthur";
-    dataDir = "/home/arthur/Sync"; # Default folder for new synced folders
-    configDir = "/home/arthur/.config/syncthing"; # Folder for Syncthing's settings and keys
+    dataDir = "/home/arthur/Sync";
+    configDir = "/home/arthur/.config/syncthing";
   };
+
   services.sshd.enable = true;
   programs.adb.enable = true;
 

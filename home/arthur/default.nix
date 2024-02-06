@@ -1,5 +1,3 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs
 , outputs
 , lib
@@ -20,40 +18,28 @@
   ];
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
     # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "arthur";
     homeDirectory = "/home/arthur";
+
+    stateVersion = "23.11";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
+  # User specific packages
   home.packages = with pkgs; [
     (retroarch.override {
       cores = with libretro; [
@@ -81,7 +67,41 @@
       };
     })
   ];
-  pointerCursor = {
+
+  # Enable home-manager and git
+  programs.home-manager.enable = true;
+  programs.git.enable = true;
+
+  # SSH
+  programs.ssh = {
+    enable = true;
+    extraConfig = "
+Host github.com
+    User git
+    IdentityFile ~/.ssh/github
+";
+  };
+
+  # Zathura - a lightweight PDF viewer
+  programs.zathura = {
+    enable = true;
+    mappings = {
+        m = "page-right-to-left";
+    };
+    options = {
+        selection-clipboard = "clipboard";
+    };
+  };
+
+  # Hyprland
+  wayland.windowmanager.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    extraconfig = builtins.readFile "./config/hypr/hyprland.conf";
+  };
+
+  # Customize look and feel
+  home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
     size = 24;
@@ -89,7 +109,6 @@
     gtk.enable = true;
   };
 
-  stateVersion = "23.11";
   gtk = {
     enable = true;
     theme = {
@@ -102,19 +121,6 @@
       package = pkgs.papirus-icon-theme;
     };
   };
-
-  programs.ssh = {
-    enable = true;
-    extraConfig = "
-Host github.com
-    User git
-    IdentityFile ~/.ssh/github
-";
-  };
-
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
-  programs.git.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
