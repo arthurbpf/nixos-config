@@ -36,6 +36,12 @@
     username = "arthur";
     homeDirectory = "/home/arthur";
 
+    # Deploy dotfiles submodule to home
+    file."/home/arthur/" = {
+    	source = ./dotfiles;
+	recursive = true;
+    };
+
     stateVersion = "23.11";
   };
 
@@ -91,13 +97,6 @@ Host github.com
     options = {
         selection-clipboard = "clipboard";
     };
-  };
-
-  # Hyprland
-  wayland.windowmanager.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    extraconfig = builtins.readFile "./config/hypr/hyprland.conf";
   };
 
   # Customize look and feel
