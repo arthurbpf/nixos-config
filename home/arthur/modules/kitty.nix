@@ -18,6 +18,6 @@
       enableZshIntegration = true;
     };
 
-    theme = "Rose-Pine";
+    theme = "Catppuccin-Mocha";
   };
 }

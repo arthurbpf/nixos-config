@@ -6,10 +6,12 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    devenv.url = "github:cachix/devenv";
+
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, devenv, ... } @ inputs:
     let inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
       systems = [
