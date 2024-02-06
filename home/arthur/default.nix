@@ -1,8 +1,4 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
+{ pkgs
 , ...
 }: {
   # You can import other home-manager modules here
@@ -20,9 +16,11 @@
   nixpkgs = {
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
+      /*
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      */
     ];
     # Configure your nixpkgs instance
     config = {
@@ -69,7 +67,7 @@
   ];
 
   # Enable home-manager and git
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true; # Makes home-manager manage itself
   programs.git.enable = true;
 
   # SSH
@@ -86,10 +84,10 @@ Host github.com
   programs.zathura = {
     enable = true;
     mappings = {
-        m = "page-right-to-left";
+      m = "page-right-to-left";
     };
     options = {
-        selection-clipboard = "clipboard";
+      selection-clipboard = "clipboard";
     };
   };
 
