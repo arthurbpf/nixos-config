@@ -32,4 +32,7 @@
       options = "--delete-older-than 2w";
     };
   };
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 }
