@@ -27,7 +27,7 @@
         dell-g15 = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-            # home-manager.nixosModules.home-manager
+            home-manager.nixosModules.home-manager
             ./hosts/dell-g15/default.nix
           ];
         };
@@ -35,7 +35,7 @@
         server = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-            # home-manager.nixosModules.home-manager
+            home-manager.nixosModules.home-manager
             ./hosts/server/default.nix
           ];
         };
