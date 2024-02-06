@@ -10,7 +10,9 @@
     username = "arthur";
     homeDirectory = "/home/arthur";
 
-    file."${config.home.homeDirectory}" = { source = ./old_dotfiles; recursive = true; };
+    # file."${config.home.homeDirectory}/" = { source = ./dotfiles; recursive = true; };
+    file."${config.xdg.configHome}/nvim" = { source = ./configs/neovim; recursive = true; };
+    
 
     # User specific packages
     packages = with pkgs; [
