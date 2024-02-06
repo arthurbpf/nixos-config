@@ -22,6 +22,7 @@
     file."${config.xdg.configHome}/waybar" = { source = ./configs/waybar; recursive = true; };
     file."${config.xdg.configHome}/swaylock" = { source = ./configs/swaylock; recursive = true; };
     file."${config.xdg.configHome}/dunst" = { source = ./configs/dunst; recursive = true; };
+    file."${config.xdg.configHome}/ranger" = { source = ./configs/ranger; recursive = true; };
 
     # User specific packages
     packages = with pkgs; [
