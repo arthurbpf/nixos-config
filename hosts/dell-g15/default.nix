@@ -67,6 +67,7 @@
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
+    kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
