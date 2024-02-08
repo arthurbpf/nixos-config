@@ -64,6 +64,8 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   nixpkgs.config.cudaSupport = true;
 
+  virtualisation.docker.storageDriver = "btrfs";
+
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;

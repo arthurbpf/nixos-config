@@ -5,6 +5,7 @@
       ./hardware-configuration.nix # Include the results of the hardware scan.
 
       ../common/users/arthur.nix
+      ../common/users/server.nix
 
       inputs.home-manager.nixosModules.home-manager
 
@@ -54,6 +55,8 @@
   virtualisation.docker.enableNvidia = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   nixpkgs.config.cudaSupport = true;
+
+  virtualisation.docker.storageDriver = "btrfs";
 
   # Bootloader.
   boot = {
