@@ -20,6 +20,7 @@
       outputs.nixosModules.networking
       outputs.nixosModules.printers
       outputs.nixosModules.programming
+      outputs.nixosModules.server
       outputs.nixosModules.sh
       outputs.nixosModules.virtualization
     ];

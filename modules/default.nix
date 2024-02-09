@@ -10,6 +10,7 @@
   networking = import ./networking.nix;
   printers = import ./printers.nix;
   programming = import ./programming.nix;
+  server = import ./server.nix;
   sh = import ./sh.nix;
   virtualization = import ./virtualization.nix;
 }
