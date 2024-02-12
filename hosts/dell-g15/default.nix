@@ -1,4 +1,4 @@
-{ config, inputs, outputs, pkgs, ... }:
+{ config, inputs, outputs, pkgs, lib,... }:
 {
   imports =
     [
@@ -27,9 +27,17 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver
+      vaapiIntel
+      nvidia-vaapi-driver
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+    driSupport32Bit = true;
+    extraPackages32 = with pkgs.pkgsi686Linux; [ 
+      intel-media-driver
+      vaapiIntel
       nvidia-vaapi-driver
       vaapiVdpau
       libvdpau-va-gl
@@ -49,11 +57,12 @@
     open = false;
 
     nvidiaSettings = false;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
 
     # PRIME Configuration
     prime = {
       sync.enable = true;
+      # reverseSync.enable = true;
 
       # Note that bus values change according to each system, get them with lshw -c display!!!
       intelBusId = "PCI:0:2:0";
@@ -61,8 +70,24 @@
     };
   };
   virtualisation.docker.enableNvidia = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
   nixpkgs.config.cudaSupport = true;
+
+  # Disable greetd and enable GDM in order to apply PRIME Reverse Sync config
+  services.greetd.enable = lib.mkForce false;
+  services.xserver = {
+    enable = true;
+    videoDrivers = ["nvidia"];
+
+    displayManager.gdm = {
+      enable = true;
+    };
+  };
+
+  environment.sessionVariables = {
+    # Tell WLR to render using Intel GPU and fallback to Nvidia
+    WLR_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0";
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
 
   virtualisation.docker.storageDriver = "btrfs";
 

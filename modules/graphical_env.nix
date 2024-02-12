@@ -37,9 +37,6 @@
     wpgtk
     wallust
 
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
-
     ungoogled-chromium
   ];
 
@@ -61,11 +58,18 @@
     xwayland.enable = true;
   };
 
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    # NIXOS_OZONE_WL = "1";
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ 
+      pkgs.xdg-desktop-portal-gtk 
+      # pkgs.xdg-desktop-portal-hyprland 
+    ];
   };
 
+  environment.sessionVariables = {
+    XDG_SESSION_TYPE = "wayland";
+  };
 
   security.pam.services.swaylock = {
     text = ''
