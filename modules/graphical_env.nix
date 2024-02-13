@@ -15,6 +15,7 @@
       withOpenASAR = true;
       withVencord = true;
     })
+    webcord
     vesktop
     spotify
     parsec-bin
@@ -30,11 +31,9 @@
     dunst
     copyq
     grimblast
-    mpvpaper
-    hyprpaper
-    swww
-    swayidle
-    swaylock-effects
+    unstable.swww
+    unstable.swayidle
+    unstable.swaylock-effects
 
     pywal
     wpgtk

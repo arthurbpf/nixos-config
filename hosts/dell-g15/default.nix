@@ -61,8 +61,8 @@
 
     # PRIME Configuration
     prime = {
-      sync.enable = true;
-      # reverseSync.enable = true;
+      # sync.enable = true;
+      reverseSync.enable = true;
 
       # Note that bus values change according to each system, get them with lshw -c display!!!
       intelBusId = "PCI:0:2:0";
