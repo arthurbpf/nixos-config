@@ -4,7 +4,7 @@
   users.users.arthur = {
     isNormalUser = true;
     description = "Arthur";
-    extraGroups = [ "networkmanager" "wheel" "input" "adbusers" "docker" ];
+    extraGroups = [ "video" "audio" "networkmanager" "wheel" "input" "adbusers" "docker" ];
     shell = pkgs.zsh;
     packages = [
       inputs.home-manager.packages.${pkgs.system}.home-manager

@@ -11,8 +11,11 @@
     bitwarden
     calibre
     teamspeak_client
-    webcord
-    discord
+    (discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+    })
+    vesktop
     spotify
     parsec-bin
 
