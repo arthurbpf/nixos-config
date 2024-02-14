@@ -1,19 +1,8 @@
 {...}:
 {
-  /*
-  services.caddy = {
+  networking.firewall = {
     enable = true;
-    virtualHosts."jellyfin.arthurfernandes.com".extraConfig = ''
-      reverse_proxy :8096
-    '';
+    allowedTCPPorts = [32400];
+    allowedUDPPorts = [32400];
   };
-  */
-
-  networking.firewall.allowedTCPPorts = [ 80 443];
-
-  /*
-  services.cloudflared = {
-    enable = true;
-  };
-  */
 }
