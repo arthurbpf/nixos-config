@@ -51,18 +51,25 @@
 
     nvidiaSettings = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-
   };
   virtualisation.docker.enableNvidia = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
   nixpkgs.config.cudaSupport = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    __GL_GSYNC_ALLOWED = "1";
+    LIBVA_DRIVER_NAME = "nvidia";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
 
   virtualisation.docker.storageDriver = "btrfs";
 
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-piix4"];
+    kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-piix4" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };

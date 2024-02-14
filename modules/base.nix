@@ -1,4 +1,4 @@
-{ outputs, ... }:
+{ outputs, pkgs, ... }:
 {
   # Allow unfree packages
   nixpkgs = {
@@ -37,4 +37,19 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+
+  systemd.services.console-blank = {
+    enable = true;
+    description = "Blank screen";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.util-linux}/bin/setterm --blank 2 --powerdown 5";
+      TTYPath = "/dev/console";
+      StandardOutput = "tty";
+    };
+    wantedBy = [ "multi-user.target" ];
+    environment = {
+      TERM = "linux";
+    };
+  };
 }
