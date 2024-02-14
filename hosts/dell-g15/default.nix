@@ -57,17 +57,18 @@
     open = false;
 
     nvidiaSettings = false;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     # PRIME Configuration
     prime = {
-      reverseSync.enable = true;
+      sync.enable = true;
 
       # Note that bus values change according to each system, get them with lshw -c display!!!
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+
   virtualisation.docker.enableNvidia = true;
   nixpkgs.config.cudaSupport = true;
 
@@ -76,8 +77,6 @@
   };
 
   environment.sessionVariables = {
-    # Tell WLR to render using Intel GPU and copy buffer to Nvidia
-    WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
@@ -115,14 +114,14 @@
   programs.adb.enable = true;
 
   specialisation = {
-    on-the-go.configuration = {
-      system.nixos.tags = [ "on-the-go" ];
+    powersaving.configuration = {
+      system.nixos.tags = [ "powersaving" ];
       hardware.nvidia = {
         powerManagement.finegrained = lib.mkForce true;
 
         prime = {
-          reverseSync.enable = lib.mkForce false;
           sync.enable = lib.mkForce false;
+          reverseSync.enable = lib.mkForce false;
 
           offload.enable = lib.mkForce true;
           offload.enableOffloadCmd = lib.mkForce true;
@@ -132,7 +131,24 @@
         # Tell WLR to render using Intel GPU
         WLR_DRM_DEVICES = lib.mkForce "/dev/dri/card1";
       };
+    };
+    powersaving-with-gpu.configuration = {
+      system.nixos.tags = [ "powersaving-with-gpu" ];
+      hardware.nvidia = {
+        powerManagement.finegrained = lib.mkForce true;
 
+        prime = {
+          sync.enable = lib.mkForce false;
+          reverseSync.enable = lib.mkForce false;
+
+          offload.enable = lib.mkForce true;
+          offload.enableOffloadCmd = lib.mkForce true;
+        };
+      };
+      environment.sessionVariables = {
+        # Tell WLR to render using Intel GPU
+        WLR_DRM_DEVICES = lib.mkForce "/dev/dri/card1:/dev/dri/card0";
+      };
     };
   };
 
