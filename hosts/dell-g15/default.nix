@@ -1,4 +1,4 @@
-{ config, inputs, outputs, pkgs, lib,... }:
+{ config, inputs, outputs, pkgs, lib, ... }:
 {
   imports =
     [
@@ -35,7 +35,7 @@
       libvdpau-va-gl
     ];
     driSupport32Bit = true;
-    extraPackages32 = with pkgs.pkgsi686Linux; [ 
+    extraPackages32 = with pkgs.pkgsi686Linux; [
       intel-media-driver
       vaapiIntel
       nvidia-vaapi-driver
@@ -61,7 +61,6 @@
 
     # PRIME Configuration
     prime = {
-      # sync.enable = true;
       reverseSync.enable = true;
 
       # Note that bus values change according to each system, get them with lshw -c display!!!
@@ -72,20 +71,13 @@
   virtualisation.docker.enableNvidia = true;
   nixpkgs.config.cudaSupport = true;
 
-  # Disable greetd and enable GDM in order to apply PRIME Reverse Sync config
-  services.greetd.enable = lib.mkForce false;
   services.xserver = {
-    enable = true;
-    videoDrivers = ["nvidia"];
-
-    displayManager.gdm = {
-      enable = true;
-    };
+    videoDrivers = [ "nvidia" ];
   };
 
   environment.sessionVariables = {
-    # Tell WLR to render using Intel GPU and fallback to Nvidia
-    WLR_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0";
+    # Tell WLR to render using Intel GPU and copy buffer to Nvidia
+    WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
@@ -94,7 +86,7 @@
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
+    kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
@@ -121,6 +113,28 @@
 
   services.sshd.enable = true;
   programs.adb.enable = true;
+
+  specialisation = {
+    on-the-go.configuration = {
+      system.nixos.tags = [ "on-the-go" ];
+      hardware.nvidia = {
+        powerManagement.finegrained = lib.mkForce true;
+
+        prime = {
+          reverseSync.enable = lib.mkForce false;
+          sync.enable = lib.mkForce false;
+
+          offload.enable = lib.mkForce true;
+          offload.enableOffloadCmd = lib.mkForce true;
+        };
+      };
+      environment.sessionVariables = {
+        # Tell WLR to render using Intel GPU
+        WLR_DRM_DEVICES = lib.mkForce "/dev/dri/card1";
+      };
+
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

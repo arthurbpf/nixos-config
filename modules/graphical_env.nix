@@ -19,6 +19,7 @@
     vesktop
     spotify
     parsec-bin
+    rustdesk
 
     nwg-look
     waybar
@@ -42,18 +43,6 @@
     ungoogled-chromium
   ];
 
-  # Enable greetd
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "arthur";
-      };
-      default_session = initial_session;
-    };
-  };
-
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -63,8 +52,8 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [ 
-      pkgs.xdg-desktop-portal-gtk 
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
       # pkgs.xdg-desktop-portal-hyprland 
     ];
   };

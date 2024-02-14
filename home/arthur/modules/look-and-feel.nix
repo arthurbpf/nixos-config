@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # Customize look and feel
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
