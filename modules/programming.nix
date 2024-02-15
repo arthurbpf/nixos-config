@@ -16,4 +16,6 @@
 
     unstable.ollama
   ];
+
+  programs.adb.enable = true;
 }

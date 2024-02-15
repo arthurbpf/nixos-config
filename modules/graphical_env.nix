@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    glxinfo
     kitty
     zathura
     pcmanfm
@@ -48,6 +49,8 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
   };
+
+  programs.xwayland.enable = true;
 
   xdg.portal = {
     enable = true;

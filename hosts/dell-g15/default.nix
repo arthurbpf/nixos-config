@@ -27,17 +27,9 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
+    driSupport32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver
-      vaapiIntel
-      nvidia-vaapi-driver
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-    driSupport32Bit = true;
-    extraPackages32 = with pkgs.pkgsi686Linux; [
-      intel-media-driver
-      vaapiIntel
       nvidia-vaapi-driver
       vaapiVdpau
       libvdpau-va-gl
@@ -85,7 +77,6 @@
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
@@ -111,7 +102,6 @@
   networking.hostName = "dell-g15";
 
   services.sshd.enable = true;
-  programs.adb.enable = true;
 
   specialisation = {
     powersaving.configuration = {
@@ -132,6 +122,7 @@
         WLR_DRM_DEVICES = lib.mkForce "/dev/dri/card1";
       };
     };
+
     powersaving-with-gpu.configuration = {
       system.nixos.tags = [ "powersaving-with-gpu" ];
       hardware.nvidia = {
@@ -145,6 +136,7 @@
           offload.enableOffloadCmd = lib.mkForce true;
         };
       };
+
       environment.sessionVariables = {
         # Tell WLR to render using Intel GPU
         WLR_DRM_DEVICES = lib.mkForce "/dev/dri/card1:/dev/dri/card0";
