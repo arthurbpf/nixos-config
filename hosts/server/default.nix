@@ -50,8 +50,9 @@
     open = false;
 
     nvidiaSettings = false;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
+
   virtualisation.docker.enableNvidia = true;
   nixpkgs.config.cudaSupport = true;
   services.xserver.videoDrivers = [ "nvidia" ];

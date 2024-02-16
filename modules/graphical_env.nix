@@ -33,9 +33,9 @@
     dunst
     copyq
     grimblast
-    unstable.swww
-    unstable.swayidle
-    unstable.swaylock-effects
+    swww
+    swayidle
+    swaylock-effects
 
     pywal
     wpgtk
