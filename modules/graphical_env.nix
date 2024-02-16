@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    udiskie
     glxinfo
     kitty
     zathura
