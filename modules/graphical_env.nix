@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    udiskie
     glxinfo
     kitty
     zathura
@@ -43,6 +42,8 @@
     wallust
 
     ungoogled-chromium
+
+    udiskie
   ];
 
   programs.hyprland = {
@@ -80,4 +81,6 @@
       ];
     };
   };
+
+  services.udisks2.enable = true;
 }
