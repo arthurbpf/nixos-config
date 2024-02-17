@@ -49,7 +49,7 @@
     open = false;
 
     nvidiaSettings = false;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
 
     # PRIME Configuration
     prime = {
@@ -77,10 +77,22 @@
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+      };
+
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
+    };
   };
 
+  time.hardwareClockInLocalTime = true;
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
