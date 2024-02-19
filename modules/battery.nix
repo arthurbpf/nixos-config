@@ -1,7 +1,23 @@
 { ... }:
 {
   # Power saving
-  services.tlp = {
+  services.thermald.enable = true;
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+    };
+  };
+
+  /*
+    services.tlp = {
     enable = false;
     settings = {
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
@@ -19,5 +35,6 @@
       # START_CHARGE_THRESH_BAT0 = 20; # 40 and bellow it starts to charge
       # STOP_CHARGE_THRESH_BAT0 = 90; # 80 and above it stops charging
     };
-  };
+    };
+  */
 }
