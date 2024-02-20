@@ -49,7 +49,7 @@
     open = false;
 
     nvidiaSettings = false;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     # PRIME Configuration
     prime = {
