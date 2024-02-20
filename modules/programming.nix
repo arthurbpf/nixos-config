@@ -15,6 +15,11 @@
     rustc
 
     unstable.ollama
+
+    insomnia
+    mysql-workbench
+    dbeaver
+    vscode
   ];
 
   programs.adb.enable = true;
