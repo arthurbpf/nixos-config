@@ -21,6 +21,9 @@
     spotify
     parsec-bin
     rustdesk
+    droidcam
+    slack
+    github-desktop
 
     nwg-look
     waybar
