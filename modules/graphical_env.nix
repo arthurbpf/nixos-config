@@ -23,12 +23,12 @@
     rustdesk
     droidcam
     slack
-    github-desktop
 
     nwg-look
     waybar
     libappindicator
     wofi
+    wofi-emoji
     bemoji
     wl-clipboard
     wtype
