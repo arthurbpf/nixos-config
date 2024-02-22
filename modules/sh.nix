@@ -21,6 +21,7 @@
     eza
     zoxide
     unar
+    croc
   ];
 
   programs.zsh = {
