@@ -2,7 +2,9 @@
 {
   environment.systemPackages = with pkgs; [
     vim
-    neovim
+    unstable.neovim
+    nodePackages."vscode-langservers-extracted"
+
     wget
     htop
     ncdu

@@ -23,6 +23,7 @@
     rustdesk
     droidcam
     slack
+    pinta
 
     nwg-look
     waybar
@@ -36,9 +37,11 @@
     dunst
     copyq
     grimblast
-    swww
-    swayidle
-    swaylock-effects
+    unstable.swww
+    unstable.swayidle
+    unstable.swaylock-effects
+    grim
+    slurp
 
     pywal
     wpgtk
@@ -61,8 +64,7 @@
     enable = true;
     wlr.enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      # pkgs.xdg-desktop-portal-hyprland 
+      pkgs.unstable.xdg-desktop-portal-gtk
     ];
   };
 
