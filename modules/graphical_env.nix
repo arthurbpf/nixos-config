@@ -24,6 +24,7 @@
     droidcam
     slack
     pinta
+    libreoffice
 
     nwg-look
     waybar
