@@ -24,6 +24,8 @@
     zoxide
     unar
     croc
+
+    awscli2
   ];
 
   programs.zsh = {
