@@ -19,5 +19,10 @@ return {
           replace = false,
           extract = "```$filetype\n(.-)```"
         }
+        require('gen').prompts['TSDoc'] = {
+          prompt = "Generate TSDoc for the following code. Only ouput the result in format ```$filetype\n...\n```:\n```$filetype\n$text\n```",
+          replace = false,
+          extract = "```$filetype\n(.-)```"
+        }
     end,
 }
