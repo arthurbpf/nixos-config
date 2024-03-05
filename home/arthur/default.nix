@@ -1,6 +1,6 @@
 { pkgs
 , config
-, ...
+, outputs,...
 }: {
   imports = [
     ../modules/syncthing.nix
@@ -15,8 +15,6 @@
     homeDirectory = "/home/arthur";
 
     # Symlink programs not supported by home-manager, or stuff that I'd rather keep out of it!
-    # file."${config.home.homeDirectory}/" = { source = ./dotfiles; recursive = true; };
-    file."${config.xdg.configHome}/nvim" = { source = ./configs/neovim; recursive = true; };
     file."${config.xdg.configHome}/hypr" = { source = ./configs/hypr; recursive = true; };
     file."${config.xdg.configHome}/wal" = { source = ./configs/pywal; recursive = true; };
     file."${config.xdg.configHome}/waybar" = { source = ./configs/waybar; recursive = true; };
@@ -68,6 +66,26 @@
       User git
       IdentityFile ~/.ssh/github
   ";
+    };
+  };
+
+  xdg = {
+    configFile = {
+      "nvim" = {
+        enable = true;
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/neovim";
+        recursive = true;
+      };
+    };
+
+    mime.enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "applications/pdf" = [ "zathura.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
+      };
     };
   };
 

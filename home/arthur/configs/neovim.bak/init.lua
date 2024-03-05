@@ -21,6 +21,7 @@ require('lazy').setup('plugins')
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+-- NOTE: You can change these options as you wish!
 
 -- Set relative numbers
 vim.o.relativenumber = true
