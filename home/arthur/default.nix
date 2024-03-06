@@ -76,6 +76,11 @@
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/neovim";
         recursive = true;
       };
+      "zshrc" = {
+        enable = true;
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/zsh/zshrc";
+        target = "${config.home.homeDirectory}/.zshrc";
+      };
     };
 
     mime.enable = true;

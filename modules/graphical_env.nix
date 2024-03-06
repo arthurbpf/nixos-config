@@ -38,9 +38,9 @@
     dunst
     copyq
     grimblast
-    unstable.swww
-    unstable.swayidle
-    unstable.swaylock-effects
+    swww
+    hypridle
+    hyprlock
     grim
     slurp
 
