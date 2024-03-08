@@ -24,6 +24,7 @@
     zoxide
     unar
     croc
+    tesseract
 
     awscli2
   ];
