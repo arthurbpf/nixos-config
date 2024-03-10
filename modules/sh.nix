@@ -25,7 +25,9 @@
     unar
     croc
     tesseract
-
+    yt-dlp
+    youtube-dl
+    gallery-dl
     awscli2
   ];
 
