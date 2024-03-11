@@ -23,4 +23,5 @@
   ];
 
   programs.adb.enable = true;
+  programs.java.enable = true;
 }
