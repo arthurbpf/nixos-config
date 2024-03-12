@@ -44,9 +44,7 @@
     powerManagement.enable = false;
     powerManagement.finegrained = false;
 
-    # Use the NVidia open source kernel module
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
+    open = true;
 
     nvidiaSettings = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -77,6 +75,7 @@
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
+    kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
     loader = {
       efi = {

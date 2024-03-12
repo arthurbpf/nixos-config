@@ -6,8 +6,6 @@
     gamemode
     pcsx2
     rpcs3
-
-    steam-tui
   ];
 
   programs.steam = {
