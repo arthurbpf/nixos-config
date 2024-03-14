@@ -7,22 +7,27 @@ fi
 source "$HOME/.zplug/init.zsh"
 
 ### Enables autocompletion
-  autoload -Uz compinit
-  compinit
-  zstyle ":completion:*" menu select
-  setopt COMPLETE_ALIASES
-  zstyle ":completion::complete:*" gain-privileges 1
+autoload -Uz compinit 
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+    compinit;
+else
+    compinit -C;
+fi;
+
+zstyle ":completion:*" menu select
+setopt COMPLETE_ALIASES
+zstyle ":completion::complete:*" gain-privileges 1
 
 ### Plugins
-  zplug "zsh-users/zsh-completions"
-  zplug "zsh-users/zsh-autosuggestions"
-  zplug "zsh-users/zsh-syntax-highlighting"
-  zplug "plugins/git", from:oh-my-zsh
-  zplug "plugins/git-auto-fetch", from:oh-my-zsh
-  zplug "plugins/git-prompt", from:oh-my-zsh
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/git-auto-fetch", from:oh-my-zsh
+zplug "plugins/git-prompt", from:oh-my-zsh
 
 ### Theme
-  zplug "romkatv/powerlevel10k", as:theme, depth:1
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -38,9 +43,9 @@ zplug load
 # Sets history file
 HISTFILE=$HOME/.zsh_history
 # Sets maximum history file size
-HISTSIZE=50000
+HISTSIZE=10000
 # Sets current session commands to be saved to file
-SAVEHIST=50000
+SAVEHIST=1000
 # Appends into history file
 setopt INC_APPEND_HISTORY
 # Saves only one command if duplicates are found
@@ -63,7 +68,6 @@ alias ll="ls -l"
 alias rm="trash"
 alias enw="emacs -nw"
 alias storage="cd /mnt/storage"
-alias sx="startx ~/.xinitrc"
 
 ### Set wallpaper script
 function wal-tile() {
