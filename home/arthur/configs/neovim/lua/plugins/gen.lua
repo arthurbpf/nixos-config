@@ -9,6 +9,10 @@ return {
           prompt = "Elaborate the following text:\n$text",
           replace = true
         }
+        require('gen').prompts['Explain_Code'] = {
+          prompt = "Explain the following piece of code:\n$text",
+          replace = false
+        }
         require('gen').prompts['Fix_Code'] = {
           prompt = "Fix the following code. Only ouput the result in format ```$filetype\n...\n```:\n```$filetype\n$text\n```",
           replace = true,
