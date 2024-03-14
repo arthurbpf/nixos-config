@@ -1,6 +1,7 @@
 { pkgs
 , config
-, outputs,...
+, outputs
+, ...
 }: {
   imports = [
     ../modules/syncthing.nix

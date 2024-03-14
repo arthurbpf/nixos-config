@@ -24,6 +24,7 @@
 
   programs.adb.enable = true;
   programs.java.enable = true;
+  programs.direnv.enable = true;
 
   boot.kernel.sysctl = {
     "fs.inotify.max_user_instances" = 4096;

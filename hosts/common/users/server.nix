@@ -3,7 +3,7 @@
   users.users.server = {
     isNormalUser = true;
     description = "Arthur";
-    extraGroups = [ "networkmanager" "wheel" "input" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "docker" "cloudflared" "terraria" ];
     shell = pkgs.bash;
     packages = [
       inputs.home-manager.packages.${pkgs.system}.home-manager
