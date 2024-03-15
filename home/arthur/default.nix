@@ -82,6 +82,19 @@
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/zsh/zshrc";
         target = "${config.home.homeDirectory}/.zshrc";
       };
+      "xinitrc" = {
+        enable = true;
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/xinitrc";
+        target = "${config.home.homeDirectory}/.xinitrc";
+      };
+      "i3" = {
+        enable = true;
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/i3";
+      };
+      "picom" = {
+        enable = true;
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/picom";
+      };
     };
 
     mime.enable = true;
