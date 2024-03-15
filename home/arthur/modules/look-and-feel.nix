@@ -8,6 +8,8 @@
     gtk.enable = true;
   };
 
+  xsession.pointerCursor.size = 24;
+
   gtk = {
     enable = true;
     theme = {
