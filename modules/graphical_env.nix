@@ -27,23 +27,23 @@
     libreoffice
 
     /*
-    nwg-look
-    waybar
-    libappindicator
-    wofi
-    wofi-emoji
-    bemoji
-    wl-clipboard
-    wtype
-    wdisplays
-    dunst
-    copyq
-    grimblast
-    swww
-    hypridle
-    hyprlock
-    grim
-    slurp
+      nwg-look
+      waybar
+      libappindicator
+      wofi
+      wofi-emoji
+      bemoji
+      wl-clipboard
+      wtype
+      wdisplays
+      dunst
+      copyq
+      grimblast
+      swww
+      hypridle
+      hyprlock
+      grim
+      slurp
     */
 
     pywal
@@ -58,31 +58,39 @@
     picom
     nitrogen
     arandr
+    xclip
+    xsel
   ];
 
   /*
-  programs.hyprland = {
+    programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
-  };
+    };
 
-  programs.xwayland.enable = true;
+    programs.xwayland.enable = true;
 
-  environment.sessionVariables = {
+    environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
-  };
+    };
 
-  security.pam.services.swaylock = {
+    security.pam.services.swaylock = {
     text = ''
       auth include login
     '';
-  };
+    };
   */
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    config = {
+      common = {
+        default = [
+          "gtk"
+        ];
+      };
+    };
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -91,7 +99,19 @@
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
-    displayManager.startx.enable = true;
+    displayManager = {
+      defaultSession = "none+i3";
+
+      lightdm = {
+        enable = true;
+      };
+    };
+
+
+    # All layout options are listed on `man xkeyboard-config`
+    layout = "us,us";
+    xkbVariant = ",intl";
+    xkbOptions = "grp:toggle";
   };
 
   programs.xss-lock = {

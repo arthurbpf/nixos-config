@@ -72,11 +72,8 @@ alias storage="cd /mnt/storage"
 ### Set wallpaper script
 function wal-tile() {
   cached_path="${HOME}/.cache/wal/wallpaper_file"
-
-  wal -ns -i "$@"
-
+  wal -s -i "$@"
   cp -f "$@" ${cached_path}
-  swww img ${cached_path}
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

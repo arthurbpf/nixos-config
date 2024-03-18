@@ -17,8 +17,8 @@
     };
   };
 
-/*
-  services.cloudflared = {
+  /*
+    services.cloudflared = {
     enable = true;
     user = "server";
 
@@ -31,13 +31,13 @@
         };
       };
     };
-  };
+    };
 
-  services.terraria = {
+    services.terraria = {
     enable = false;
     port = 7777;
     maxPlayers = 32;
     dataDir = "/mnt/storage/server/apps/terraria-server";
-  };
-*/
+    };
+  */
 }

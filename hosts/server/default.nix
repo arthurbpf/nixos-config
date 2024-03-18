@@ -49,22 +49,22 @@
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
     open = false;
 
-    nvidiaSettings = false;
+    nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   virtualisation.docker.enableNvidia = true;
   nixpkgs.config.cudaSupport = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  
+
   /*
-  environment.sessionVariables = {
+    environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     __GL_GSYNC_ALLOWED = "1";
     LIBVA_DRIVER_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-  };
+    };
   */
 
   virtualisation.docker.storageDriver = "btrfs";
