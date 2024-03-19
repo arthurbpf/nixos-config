@@ -41,6 +41,14 @@
             ./hosts/server/default.nix
           ];
         };
+
+        dell-latitude  = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            home-manager.nixosModules.home-manager
+            ./hosts/dell-latitude/default.nix
+          ];
+        };
       };
 
       # Standalone home-manager configuration entrypoint
@@ -54,6 +62,13 @@
           ];
         };
         "arthur@server" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            ./home/arthur/default.nix
+          ];
+        };
+        "arthur@dell-latitude" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
