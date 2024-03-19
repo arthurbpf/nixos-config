@@ -2,7 +2,7 @@
 
   users.users.server = {
     isNormalUser = true;
-    description = "Arthur";
+    description = "Server";
     extraGroups = [ "networkmanager" "wheel" "input" "docker" "cloudflared" "terraria" ];
     shell = pkgs.bash;
     packages = [

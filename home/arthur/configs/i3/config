@@ -3,6 +3,7 @@ set $mod Mod4
 
 font pango:monospace 8
 
+exec --no-startup-id $HOME/.screenlayout/default.sh
 exec --no-startup-id wal -s -i $HOME/.cache/wal/wallpaper_file
 
 # Start XDG autostart .desktop files using dex. See also

@@ -107,7 +107,6 @@
       };
     };
 
-
     # All layout options are listed on `man xkeyboard-config`
     layout = "us,us";
     xkbVariant = ",intl";
