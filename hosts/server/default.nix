@@ -73,9 +73,29 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-piix4" ];
+
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+      };
+
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+        configurationLimit = 10;
+      };
+    };
+  };
+  /*
+    boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
+    kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-piix4" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-  };
+    };
+  */
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";

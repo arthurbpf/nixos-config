@@ -42,7 +42,7 @@
           ];
         };
 
-        dell-latitude  = nixpkgs.lib.nixosSystem {
+        dell-latitude = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
             home-manager.nixosModules.home-manager

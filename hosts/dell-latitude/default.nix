@@ -38,7 +38,7 @@
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelModules = [];
+    kernelModules = [ ];
 
     loader = {
       efi = {
