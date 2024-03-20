@@ -43,9 +43,9 @@ zplug load
 # Sets history file
 HISTFILE=$HOME/.zsh_history
 # Sets maximum history file size
-HISTSIZE=10000
+HISTSIZE=50000
 # Sets current session commands to be saved to file
-SAVEHIST=1000
+SAVEHIST=50000
 # Appends into history file
 setopt INC_APPEND_HISTORY
 # Saves only one command if duplicates are found
