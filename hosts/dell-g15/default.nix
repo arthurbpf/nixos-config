@@ -44,14 +44,14 @@
     powerManagement.enable = false;
     powerManagement.finegrained = false;
 
-    open = true;
+    open = false;
 
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     # PRIME Configuration
     prime = {
-      reverseSync.enable = true;
+      sync.enable = true;
 
       # Note that bus values change according to each system, get them with lshw -c display!!!
       intelBusId = "PCI:0:2:0";
@@ -116,27 +116,43 @@
   services.sshd.enable = true;
 
   specialisation = {
-    powersaving.configuration = {
-      system.nixos.tags = [ "powersaving" ];
+    powersaving-no-dgpu.configuration = {
+      system.nixos.tags = [ "powersaving-no-dgpu" ];
+
+      boot.extraModprobeConfig = ''
+        blacklist nouveau
+        options nouveau modeset=0
+      '';
+        
+      services.udev.extraRules = ''
+        # Remove NVIDIA USB xHCI Host Controller devices, if present
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+        # Remove NVIDIA USB Type-C UCSI devices, if present
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+        # Remove NVIDIA Audio devices, if present
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+        # Remove NVIDIA VGA/3D controller devices
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+      '';
+      boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+
       hardware.nvidia = {
-        powerManagement.finegrained = lib.mkForce true;
+        modesetting.enable = lib.mkForce false;
+        powerManagement.enable = lib.mkForce false;
+        powerManagement.finegrained = lib.mkForce false;
 
         prime = {
           sync.enable = lib.mkForce false;
           reverseSync.enable = lib.mkForce false;
-
-          offload.enable = lib.mkForce true;
-          offload.enableOffloadCmd = lib.mkForce true;
+          offload.enable = lib.mkForce false;
+          offload.enableOffloadCmd = lib.mkForce false;
         };
-      };
-      environment.sessionVariables = {
-        # Tell WLR to render using Intel GPU
-        WLR_DRM_DEVICES = lib.mkForce "/dev/dri/card1";
       };
     };
 
-    powersaving-with-gpu.configuration = {
-      system.nixos.tags = [ "powersaving-with-gpu" ];
+    powersaving-with-dgpu.configuration = {
+      system.nixos.tags = [ "powersaving-with-dgpu" ];
+
       hardware.nvidia = {
         powerManagement.finegrained = lib.mkForce true;
 
@@ -147,11 +163,6 @@
           offload.enable = lib.mkForce true;
           offload.enableOffloadCmd = lib.mkForce true;
         };
-      };
-
-      environment.sessionVariables = {
-        # Tell WLR to render using Intel GPU
-        WLR_DRM_DEVICES = lib.mkForce "/dev/dri/card1:/dev/dri/card0";
       };
     };
   };

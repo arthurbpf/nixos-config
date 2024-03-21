@@ -25,6 +25,7 @@
     slack
     pinta
     libreoffice
+    filezilla
 
     /*
       nwg-look
@@ -60,6 +61,7 @@
     arandr
     xclip
     xsel
+    flameshot
   ];
 
   /*
