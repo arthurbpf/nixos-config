@@ -1,14 +1,15 @@
 { inputs, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    glxinfo
     kitty
-    zathura
     pcmanfm
+    logseq
+
+    glxinfo
+    zathura
     piper
     obs-studio
     mpv
-    remmina
     bitwarden
     calibre
     teamspeak_client
@@ -16,8 +17,6 @@
       withOpenASAR = true;
       withVencord = true;
     })
-    webcord
-    vesktop
     spotify
     parsec-bin
     rustdesk
