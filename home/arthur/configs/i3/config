@@ -29,6 +29,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# Use brightnessctl to adjust brightness.
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% && $refresh_i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- && $refresh_i3status
+
+# Use flameshot to take screenshots
+bindsym Print exec --no-startup-id flameshot gui
+bindsym $mod+Print exec --no-startup-id flameshot full -p $HOME/Pictures/Screenshots
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -42,8 +50,8 @@ bindsym $mod+Return exec kitty
 bindsym $mod+i exec firefox
 # start rofi
 bindsym $mod+p exec "rofi -modi drun,run -show drun"
-# start file manager
-bindsym $mod+sl exec pcmanfm
+# start arandr
+bindsym $mod+Shift+d exec arandr
 
 # kill focused window
 bindsym $mod+c kill
