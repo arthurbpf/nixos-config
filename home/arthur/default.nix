@@ -91,6 +91,10 @@
         enable = true;
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/i3";
       };
+      "i3status" = {
+        enable = true;
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/i3status";
+      };
       "picom" = {
         enable = true;
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home/arthur/configs/picom";

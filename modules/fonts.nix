@@ -7,6 +7,7 @@
       noto-fonts-cjk
       noto-fonts-emoji
       fira-code
+      font-awesome
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     ];
 
