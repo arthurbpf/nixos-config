@@ -4,7 +4,6 @@
     kitty
     pcmanfm
     logseq
-
     glxinfo
     zathura
     piper

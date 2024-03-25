@@ -17,7 +17,7 @@
     (unstable.ollama.override { acceleration = "cuda"; })
 
     insomnia
-    postman
+    unstable.postman
     mysql-workbench
     dbeaver
     vscode
