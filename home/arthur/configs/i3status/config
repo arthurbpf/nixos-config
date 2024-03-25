@@ -14,17 +14,17 @@ order += "ethernet enp3s0"
 order += "battery 0"
 order += "memory"
 order += "load"
-order += "tztime local"
 order += "tztime chicago"
+order += "tztime local"
 
 wireless wlp0s20f3 {
-        format_up = " : (%quality at %essid, %bitrate) %ip"
-        format_down = " : down"
+        format_up = "  (%quality at %essid, %bitrate) %ip"
+        format_down = "  down"
 }
 
 ethernet enp3s0 {
-        format_up = " :%ip (%speed)"
-        format_down = " : down"
+        format_up = "  %ip (%speed)"
+        format_down = "  down"
 }
 
 battery 0 {
@@ -58,12 +58,12 @@ tztime local {
 }
 
 tztime chicago {
-        format = "%Y-%m-%d %H:%M:%S %Z"
+        format = "🇺🇸 %H:%M:%S"
         timezone = "America/Chicago"
 }
 
 load {
-        format = " : %5min"
+        format = "  %5min"
 }
 
 cpu_temperature 0 {
@@ -72,13 +72,13 @@ cpu_temperature 0 {
 }
 
 memory {
-        format = "%used"
+        format = "  %used"
         threshold_degraded = "10%"
-        format_degraded = " : %free"
+        format_degraded = "  %free"
 }
 
 disk "/" {
-        format = " : %free free"
+        format = "  %free free"
 }
 
 read_file uptime {

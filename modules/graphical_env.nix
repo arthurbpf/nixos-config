@@ -54,6 +54,7 @@
     udiskie
 
     rofi
+    rofimoji
     picom
     nitrogen
     arandr

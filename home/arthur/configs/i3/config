@@ -50,6 +50,8 @@ bindsym $mod+Return exec kitty
 bindsym $mod+i exec firefox
 # start rofi
 bindsym $mod+p exec "rofi -modi drun,run -show drun"
+# start rofi
+bindsym $mod+Shift+p exec "rofimoji"
 # start arandr
 bindsym $mod+Shift+d exec arandr
 
