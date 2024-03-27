@@ -15,6 +15,12 @@
       enable = true;
       port = 9993;
     };
+
+    ollama = {
+      enable = true;
+      acceleration = "cuda";
+      listenAddress = "127.0.0.1:11434";
+    };
   };
 
   /*

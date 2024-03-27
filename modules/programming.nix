@@ -14,8 +14,6 @@
     cargo
     rustc
 
-    (unstable.ollama.override { acceleration = "cuda"; })
-
     insomnia
     unstable.postman
     mysql-workbench
